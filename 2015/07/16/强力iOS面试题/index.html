@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    
+    <title>强力iOS面试题 | Kaiser&#39;s Blog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+        <meta name="keywords" content="iOS,面试" />
+    
+    <meta name="description" content="网上乱逛看到的强力面试题list，问别人问自己都是好干货，存了。
+
+以下是题目[※]@property中有哪些属性关键字？
+
+属性相关的关键字，可以按照一些功能来分类线程相关atomic：默认为该属性，功能为在多线程的情况下，编译器自动生成相应的线程安全代码，达到互斥加锁的目的，避免所对应的变量出现读写不同步的问题。nonatomic：当该变量不需要考虑多线程的情况时使用该关键字，能够提高性能和效">
+<meta property="og:type" content="article">
+<meta property="og:title" content="强力iOS面试题">
+<meta property="og:url" content="http://blog.wangxinn.com/2015/07/16/强力iOS面试题/index.html">
+<meta property="og:site_name" content="Kaiser's Blog">
+<meta property="og:description" content="网上乱逛看到的强力面试题list，问别人问自己都是好干货，存了。
+
+以下是题目[※]@property中有哪些属性关键字？
+
+属性相关的关键字，可以按照一些功能来分类线程相关atomic：默认为该属性，功能为在多线程的情况下，编译器自动生成相应的线程安全代码，达到互斥加锁的目的，避免所对应的变量出现读写不同步的问题。nonatomic：当该变量不需要考虑多线程的情况时使用该关键字，能够提高性能和效">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/670128-3634d6175691e60d.png?imageMogr2/auto-orient/strip|imageView2/2/w/1240">
+<meta property="og:updated_time" content="2016-03-07T09:32:31.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="强力iOS面试题">
+<meta name="twitter:description" content="网上乱逛看到的强力面试题list，问别人问自己都是好干货，存了。
+
+以下是题目[※]@property中有哪些属性关键字？
+
+属性相关的关键字，可以按照一些功能来分类线程相关atomic：默认为该属性，功能为在多线程的情况下，编译器自动生成相应的线程安全代码，达到互斥加锁的目的，避免所对应的变量出现读写不同步的问题。nonatomic：当该变量不需要考虑多线程的情况时使用该关键字，能够提高性能和效">
+<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/670128-3634d6175691e60d.png?imageMogr2/auto-orient/strip|imageView2/2/w/1240">
+    
+
+    
+
+    
+
+    <link rel="stylesheet" href="/vendor/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/vendor/titillium-web/styles.css">
+    <link rel="stylesheet" href="/vendor/source-code-pro/styles.css">
+
+    <link rel="stylesheet" href="/css/style.css">
+
+    <script src="/vendor/jquery/2.0.3/jquery.min.js"></script>
+    
+    
+        <link rel="stylesheet" href="/vendor/fancybox/jquery.fancybox.css">
+    
+    
+        <link rel="stylesheet" href="/vendor/scrollLoading/style.css">
+    
+    
+    
+
+</head>
+
+<body>
+    <div id="wrap">
+        <header id="header">
+    <div id="header-outer" class="outer">
+        <div class="container">
+            <div class="container-inner">
+                <div id="header-title">
+                    <h1 class="logo-wrap">
+                        <a href="/" class="logo"></a>
+                    </h1>
+                    
+                        <h2 class="subtitle-wrap">
+                            <p class="subtitle">技术&amp;产品，发展&amp;思考，事业&amp;生活</p>
+                        </h2>
+                    
+                </div>
+                <div id="header-inner" class="nav-container">
+                    <a id="main-nav-toggle" class="nav-icon fa fa-bars"></a>
+                    <div class="nav-container-inner">
+                        <ul id="main-nav">
+                            
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/">主页</a>
+                                </li>
+                            
+                                        <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/心得/">心得</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/记录/">记录</a></li></ul>
+                                    
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/about">关于</a>
+                                </li>
+                            
+                        </ul>
+                        <nav id="sub-nav">
+                            <div id="search-form-wrap">
+
+    <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="搜索"><input type="hidden" name="sitesearch" value="http://blog.wangxinn.com"></form>
+
+</div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+        <div class="container">
+            <div class="main-body container-inner">
+                <div class="main-body-inner">
+                    <section id="main">
+                        <div class="main-body-header">
+    <h1 class="header">
+    
+    <a class="page-title-link" href="/categories/记录/">记录</a>
+    </h1>
+</div>
+                        <div class="main-body-content">
+                            <article id="post-强力iOS面试题" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+        强力iOS面试题
+        </h1>
+    
+
+            </header>
+        
+        <div class="article-subtitle">
+            <a href="/2015/07/16/强力iOS面试题/" class="article-date">
+    <time datetime="2015-07-16T09:48:48.000Z" itemprop="datePublished">2015-07-16</time>
+</a>
+            
+    <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/iOS/">iOS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/面试/">面试</a></li></ul>
+
+        </div>
+        <div class="article-entry" itemprop="articleBody">
+            <p>网上乱逛看到的强力面试题list，问别人问自己都是好干货，存了。</p>
+<hr>
+<h2 id="以下是题目"><a href="#以下是题目" class="headerlink" title="以下是题目"></a>以下是题目</h2><p>[※]@property中有哪些属性关键字？</p>
+<blockquote>
+<h4 id="属性相关的关键字，可以按照一些功能来分类"><a href="#属性相关的关键字，可以按照一些功能来分类" class="headerlink" title="属性相关的关键字，可以按照一些功能来分类"></a>属性相关的关键字，可以按照一些功能来分类</h4><h5 id="线程相关"><a href="#线程相关" class="headerlink" title="线程相关"></a>线程相关</h5><p>atomic：默认为该属性，功能为在多线程的情况下，编译器自动生成相应的线程安全代码，达到互斥加锁的目的，避免所对应的变量出现读写不同步的问题。<br>nonatomic：当该变量不需要考虑多线程的情况时使用该关键字，能够提高性能和效率。</p>
+<blockquote>
+<p>atomic主要用于线程保护的，可以避免当一个线程在对一个地址进行访问时防止另一个线程对此地址同时进行访问，防止了数据错误。众所周知，线程锁会耗费系统资源，所以在实际使用时，如果没有线程相关的内容，建议使用nonatomic。<br>目前大部分的iOS app中，nonatomic的普遍使用也是基于性能考虑的。</p>
+</blockquote>
+<h5 id="读写相关"><a href="#读写相关" class="headerlink" title="读写相关"></a>读写相关</h5><p>readwrite：默认类型，会自动生成相应的读写方法。<br>readonly：只生成相应的get方法，不生成set方法。</p>
+<blockquote>
+<p>主要使用目的：控制外部类对该属性的访问权限。</p>
+</blockquote>
+<h5 id="内存引用相关"><a href="#内存引用相关" class="headerlink" title="内存引用相关"></a>内存引用相关</h5><p>这里又根据系统版本分为两类，一类是iOS 5.0之前，一类是iOS 5.0加入了ARC机制之后。</p>
+<h6 id="ARC之前"><a href="#ARC之前" class="headerlink" title="ARC之前"></a>ARC之前</h6><p>assgin：默认类型，set方法中为直接赋值，即直接指向了一个地址，没有任何引用计数的更改。<br>retain：set方法中，首先释放（release）之前的对象，即去除对于旧对象的引用计数，并直接指向新的对象的地址，并使新对象的引用计数加一。<br>copy：set方法中，与retain类似，先release旧对象，然后对于新的对象进行copy，实质为使用新的内存空间和地址，引用计数唯一，并将目标对象的内容拷贝过来。可以认为是内容拷贝。</p>
+<h6 id="ARC之后"><a href="#ARC之后" class="headerlink" title="ARC之后"></a>ARC之后</h6><p>weak：弱引用，与assgin类似，只是当对象释放后，weak类型会自动置空，即将指针设为nil，避免野指针。<br>strong：强引用，默认类型，与retain类似。</p>
+<blockquote>
+<p>内存计数方面的关键字是objc主要内容。</p>
+</blockquote>
+</blockquote>
+<p>[※]weak属性需要在dealloc中置nil么？</p>
+<blockquote>
+<p>不需要，可以参考上面的答案，weak类型的属性会在对象释放后自动将指针设为nil，防止野指针。</p>
+</blockquote>
+<p>[※※]@synthesize和@dynamic分别有什么作用？</p>
+<blockquote>
+<h6 id="synthesize"><a href="#synthesize" class="headerlink" title="@synthesize"></a>@synthesize</h6><p>该关键字会在编译期间自动生成set和get方法。当自定义了set或get方法时，会自动覆盖编译器生产的方法。</p>
+<h6 id="dynamic"><a href="#dynamic" class="headerlink" title="@dynamic"></a>@dynamic</h6><p>该关键字不会自动生成set和get方法，同时避免了编译警告，但是需要我们自己去实现set和get方法，一般在动态绑定或某些需要特别定义读写方法时使用该关键字。</p>
+</blockquote>
+<p>[※※※]ARC下，不显式指定任何属性关键字时，默认的关键字都有哪些？</p>
+<blockquote>
+<p>ARC下默认的关键字为：atomic，<del>weak</del>，strong（经<a href="http://www.jianshu.com/users/3b06e48136fa" target="_blank" rel="external">@Chrisss</a>同学指正，谢谢），readwrite。<br>非ARC下默认的关键字为：atomic，retain，readwrite。</p>
+<blockquote>
+<p>其实说起来就是线程相关，内存相关，读写相关。</p>
+</blockquote>
+</blockquote>
+<p>[※※※]用@property声明的NSString（或NSArray，NSDictionary）经常使用copy关键字，为什么？如果改用strong关键字，可能造成什么问题？</p>
+<blockquote>
+<p>这里主要思考的是copy关键字使用场景，首先要理解copy关键字的实质，copy相当于是进行了一次内容拷贝，其指针地址和内存空间都与被拷贝的对象不同，但是内容是相同的。那么，copy关键字的使用场景就得到了：</p>
+<blockquote>
+<p>当需要对于一个被赋值的对象内容进行修改，并且不能修改原对象内容时，就使用copy关键字。</p>
+</blockquote>
+<p>回到原题，NSString、NSArray等类都是用于封装数据的结构类，这些类的对象经常是需要进行内容修改的。所以，为了避免对于原本赋值对象内容的修改，而只是针对当前类中的对象内容进行修改，就需要使用copy关键字了。当然，如果确定使用过程中都不需要对对象内容进行修改，那么根据ARC环境使用retain或者strong都是可以的，在一定程度上还能减少对于内存的使用。</p>
+</blockquote>
+<p>[※※※]@synthesize合成实例变量的规则是什么？假如property名为foo，存在一个名为_foo的实例变量，那么还会自动合成新变量么？</p>
+<blockquote>
+<p>以下内容是根据个人的理解和经验。</p>
+<h5 id="synthesize合成实例变量的规则是："><a href="#synthesize合成实例变量的规则是：" class="headerlink" title="@synthesize合成实例变量的规则是："></a>@synthesize合成实例变量的规则是：</h5><blockquote>
+<p>在代码的实现文件（.m文件）里面自动生成指定实例的get和set方法。</p>
+</blockquote>
+<p>如果在代码的声明文件（.h文件）中未定义ivar申明，在当前Xcode 6.0版本中，只要定义了property类型，不需要写@synthesize关键字，编译器会动态创建相对应的ivar变量，如：<code>@synthesize foo = _foo;</code>。<br>在之前的Xcode版本不会动态生成相应的合成代码，需要手写，完整的写法如下：</p>
+<h6 id="h文件"><a href="#h文件" class="headerlink" title=".h文件"></a>.h文件</h6><pre><code>#import &lt;Foundation/Foundation.h&gt;
+@interface TestClass : NSObject
+{
+    NSObject *_object;
+}
+@property (nonatomic, retain) NSObject *object;
+@end
+</code></pre><h6 id="m文件"><a href="#m文件" class="headerlink" title=".m文件"></a>.m文件</h6><pre><code>#import &quot;TestClass.h&quot;
+@implementation TestClass
+@synthesize object = _object; //这里写成@synthesize object;也是可以的，但是相应的属性名称和ivar名称就是相同的了。在调用时，如果直接写object，就是ivar调用；如果是self.object则是调用get方法。
+@end
+</code></pre><h5 id="当存在一个名为-foo的实例变量，那么还会自动合成新变量么？"><a href="#当存在一个名为-foo的实例变量，那么还会自动合成新变量么？" class="headerlink" title="当存在一个名为_foo的实例变量，那么还会自动合成新变量么？"></a>当存在一个名为_foo的实例变量，那么还会自动合成新变量么？</h5><p>不会。<br><img src="http://upload-images.jianshu.io/upload_images/670128-3634d6175691e60d.png?imageMogr2/auto-orient/strip|imageView2/2/w/1240" alt="程序员都无所谓的warning众"></p>
+</blockquote>
+<p>[※※※※※]在有了自动合成属性实例变量之后，@synthesize还有哪些使用场景？</p>
+<blockquote>
+<p>这里有一个答案，看起来挺合适的。</p>
+<blockquote>
+<p><a href="http://stackoverflow.com/questions/19784454/when-should-i-use-synthesize-explicitly" target="_blank" rel="external">http://stackoverflow.com/questions/19784454/when-should-i-use-synthesize-explicitly</a></p>
+</blockquote>
+<p>具体说起来就是：</p>
+<blockquote>
+<p>不会自动生成的地方，又不想自己写get和set方法，就用这个。</p>
+</blockquote>
+</blockquote>
+<p>[※※]objc中向一个nil对象发送消息将会发生什么？</p>
+<blockquote>
+<p>不会发生什么。这个答案讲的很详细：</p>
+<blockquote>
+<p><a href="http://blog.csdn.net/hanangellove/article/details/45013581" target="_blank" rel="external">http://blog.csdn.net/hanangellove/article/details/45013581</a></p>
+</blockquote>
+<p>具体原因如下：</p>
+<blockquote>
+<p>objc是动态语言，每个方法在运行时会被动态转为消息发送，即：<code>objc_msgSend(receiver, selector)</code>。</p>
+</blockquote>
+<p>那么，为了方便理解这个内容，还是贴一个objc的源代码：</p>
+<h6 id="runtime-h（类在runtime中的定义）"><a href="#runtime-h（类在runtime中的定义）" class="headerlink" title="runtime.h（类在runtime中的定义）"></a>runtime.h（类在runtime中的定义）</h6><pre><code>struct objc_class {
+  Class isa OBJC_ISA_AVAILABILITY; //isa指针指向Meta Class，因为Objc的类的本身也是一个Object，为了处理这个关系，runtime就创造了Meta Class，当给类发送[NSObject alloc]这样消息时，实际上是把这个消息发给了Class Object
+  #if !__OBJC2__
+  Class super_class OBJC2_UNAVAILABLE; // 父类
+  const char *name OBJC2_UNAVAILABLE; // 类名
+  long version OBJC2_UNAVAILABLE; // 类的版本信息，默认为0
+  long info OBJC2_UNAVAILABLE; // 类信息，供运行期使用的一些位标识
+  long instance_size OBJC2_UNAVAILABLE; // 该类的实例变量大小
+  struct objc_ivar_list *ivars OBJC2_UNAVAILABLE; // 该类的成员变量链表
+  struct objc_method_list **methodLists OBJC2_UNAVAILABLE; // 方法定义的链表
+  struct objc_cache *cache OBJC2_UNAVAILABLE; // 方法缓存，对象接到一个消息会根据isa指针查找消息对象，这时会在method Lists中遍历，如果cache了，常用的方法调用时就能够提高调用的效率。
+  struct objc_protocol_list *protocols OBJC2_UNAVAILABLE; // 协议链表
+  #endif
+  } OBJC2_UNAVAILABLE;
+</code></pre><p>objc在向一个对象发送消息时，runtime库会根据对象的isa指针找到该对象实际所属的类，然后在该类中的方法列表以及其父类方法列表中寻找方法运行，然后在发送消息的时候，objc_msgSend方法不会返回值，所谓的返回内容都是具体调用时执行的。<br>那么，回到本题，如果向一个nil对象发送消息，首先在寻找对象的isa指针时就是0地址返回了，所以不会出现任何错误。</p>
+</blockquote>
+<p>[※※※]objc中向一个对象发送消息[obj foo]和objc_msgSend()函数之间有什么关系？</p>
+<blockquote>
+<p>同上题：<code>[obj foo];</code>在objc动态编译时，会被转意为：<code>objc_msgSend(obj, @selector(foo));</code>。</p>
+</blockquote>
+<p>[※※※]什么时候会报unrecognized selector的异常？</p>
+<blockquote>
+<p>这里也有一篇文章讲的很清楚。</p>
+<blockquote>
+<p><a href="http://tech.glowing.com/cn/objective-c-runtime/" target="_blank" rel="external">http://tech.glowing.com/cn/objective-c-runtime/</a></p>
+</blockquote>
+<p>简单的流程如下，在上一题中也提到过：</p>
+<blockquote>
+<p>objc是动态语言，每个方法在运行时会被动态转为消息发送，即：<code>objc_msgSend(receiver, selector)</code>。</p>
+</blockquote>
+<p>objc在向一个对象发送消息时，runtime库会根据对象的isa指针找到该对象实际所属的类，然后在该类中的方法列表以及其父类方法列表中寻找方法运行，如果，在最顶层的父类中依然找不到相应的方法时，程序在运行时会挂掉并抛出异常<strong><em>unrecognized selector sent to XXX </em></strong>。但是在这之前，objc的运行时会给出三次拯救程序崩溃的机会：</p>
+<ol>
+<li>Method resolution<br>objc运行时会调用<code>+resolveInstanceMethod:</code>或者 <code>+resolveClassMethod:</code>，让你有机会提供一个函数实现。如果你添加了函数并返回 YES，那运行时系统就会重新启动一次消息发送的过程，如果 resolve 方法返回 NO ，运行时就会移到下一步，<strong>消息转发（Message Forwarding）</strong>。</li>
+<li>Fast forwarding<br>如果目标对象实现了<code>-forwardingTargetForSelector:</code>，Runtime 这时就会调用这个方法，给你把这个消息转发给其他对象的机会。<br>只要这个方法返回的不是nil和self，整个消息发送的过程就会被重启，当然发送的对象会变成你返回的那个对象。否则，就会继续<strong>Normal Fowarding</strong>。<br>这里叫Fast，只是为了区别下一步的转发机制。因为这一步不会创建任何新的对象，但下一步转发会创建一个NSInvocation对象，所以相对更快点。</li>
+<li>Normal forwarding<br>这一步是Runtime最后一次给你挽救的机会。首先它会发送<code>-methodSignatureForSelector:</code>消息获得函数的参数和返回值类型。如果<code>-methodSignatureForSelector:</code>返回nil，Runtime则会发出<code>-doesNotRecognizeSelector:</code>消息，程序这时也就挂掉了。如果返回了一个函数签名，Runtime就会创建一个NSInvocation对象并发送<code>-forwardInvocation:</code>消息给目标对象。</li>
+</ol>
+</blockquote>
+<p>[※※※※]一个objc对象如何进行内存布局？（考虑有父类的情况）</p>
+<blockquote>
+<p>首先发一篇网上最多的答案：</p>
+<blockquote>
+<p><a href="https://github.com/ChenYilong/iOSInterviewQuestions/commit/0e7b5e2b13a5aec84c2d976bfe4f35b4d292383b" target="_blank" rel="external">https://github.com/ChenYilong/iOSInterviewQuestions/commit/0e7b5e2b13a5aec84c2d976bfe4f35b4d292383b</a></p>
+</blockquote>
+<p>这个答案这几天思考了很多，也参考了不少别人的答案，这里写一下自己的理解。<br>还是要把objc中class定义的源代码贴上来：</p>
+<h6 id="runtime-h（类在runtime中的定义）-1"><a href="#runtime-h（类在runtime中的定义）-1" class="headerlink" title="runtime.h（类在runtime中的定义）"></a>runtime.h（类在runtime中的定义）</h6><pre><code>struct objc_class {
+  Class isa OBJC_ISA_AVAILABILITY; //isa指针指向Meta Class，因为Objc的类的本身也是一个Object，为了处理这个关系，runtime就创造了Meta Class，当给类发送[NSObject alloc]这样消息时，实际上是把这个消息发给了Class Object
+  #if !__OBJC2__
+  Class super_class OBJC2_UNAVAILABLE; // 父类
+  const char *name OBJC2_UNAVAILABLE; // 类名
+  long version OBJC2_UNAVAILABLE; // 类的版本信息，默认为0
+  long info OBJC2_UNAVAILABLE; // 类信息，供运行期使用的一些位标识
+  long instance_size OBJC2_UNAVAILABLE; // 该类的实例变量大小
+  struct objc_ivar_list *ivars OBJC2_UNAVAILABLE; // 该类的成员变量链表
+  struct objc_method_list **methodLists OBJC2_UNAVAILABLE; // 方法定义的链表
+  struct objc_cache *cache OBJC2_UNAVAILABLE; // 方法缓存，对象接到一个消息会根据isa指针查找消息对象，这时会在method Lists中遍历，如果cache了，常用的方法调用时就能够提高调用的效率。
+  struct objc_protocol_list *protocols OBJC2_UNAVAILABLE; // 协议链表
+  #endif
+  } OBJC2_UNAVAILABLE;
+</code></pre><p>首先，其实我也不能说清楚内存布局到底是个什么意思，这个希望有朋友可以帮我解答一下</p>
+</blockquote>
+<p>[※※※※]一个objc对象的isa的指针指向什么？有什么作用？</p>
+<p>[※※※※]下面的代码输出什么？</p>
+<pre><code>@implementation Son : Father
+- (id)init
+{
+    self = [super init];
+    if (self) {
+        NSLog(@&quot;%@&quot;, NSStringFromClass([self class]));
+        NSLog(@&quot;%@&quot;, NSStringFromClass([super class]));
+    }
+    return self;
+}
+@end
+</code></pre><p>[※※※※]runtime如何通过selector找到对应的IMP地址？（分别考虑类方法和实例方法）</p>
+<p>[※※※※]使用runtime Associate方法关联的对象，需要在主对象dealloc的时候释放么？</p>
+<p>[※※※※※]objc中的类方法和实例方法有什么本质区别和联系？</p>
+<p>[※※※※※]_objc_msgForward函数是做什么的，直接调用它将会发生什么？</p>
+<p>[※※※※※]runtime如何实现weak变量的自动置nil？</p>
+<p>[※※※※※]能否向编译后得到的类中增加实例变量？能否向运行时创建的类中添加实例变量？为什么？</p>
+<p>[※※※]runloop和线程有什么关系？</p>
+<p>[※※※]runloop的mode作用是什么？</p>
+<p>[※※※※]以+scheduledTimerWithTimeInterval…的方式触发的timer，在滑动页面上的列表时，timer会暂定回调，为什么？如何解决？</p>
+<p>[※※※※※]猜想runloop内部是如何实现的？</p>
+<p>[※]objc使用什么机制管理对象内存？</p>
+<p>[※※※※]ARC通过什么方式帮助开发者管理内存？</p>
+<p>[※※※※]不手动指定autoreleasepool的前提下，一个autorealese对象在什么时刻释放？（比如在一个vc的viewDidLoad中创建）</p>
+<p>[※※※※]BAD_ACCESS在什么情况下出现？</p>
+<p>[※※※※※]苹果是如何实现autoreleasepool的？</p>
+<p>[※※]使用block时什么情况会发生引用循环，如何解决？</p>
+<p>[※※]在block内如何修改block外部变量？</p>
+<p>[※※※]使用系统的某些block api（如UIView的block版本写动画时），是否也考虑引用循环问题？</p>
+<p>[※※]GCD的队列（dispatch_queue_t）分哪两种类型？</p>
+<p>[※※※※]如何用GCD同步若干个异步调用？（如根据若干个url异步加载多张图片，然后在都下载完成后合成一张整图）</p>
+<p>[※※※※]dispatch_barrier_async的作用是什么？</p>
+<p>[※※※※※]苹果为什么要废弃dispatch_get_current_queue？</p>
+<p>[※※※※※]以下代码运行结果如何？</p>
+<pre><code>- (void)viewDidLoad
+{
+    [super viewDidLoad];
+    NSLog(@&quot;1&quot;);
+    dispatch_sync(dispatch_get_main_queue(), ^{
+        NSLog(@&quot;2&quot;);
+    });
+    NSLog(@&quot;3&quot;);
+}
+</code></pre><p>[※※]addObserver:forKeyPath:options:context:各个参数的作用分别是什么，observer中需要实现哪个方法才能获得KVO回调？</p>
+<p>[※※※]如何手动触发一个value的KVO</p>
+<p>[※※※]若一个类有实例变量NSString *_foo，调用setValue:forKey:时，可以以foo还是_foo作为key？</p>
+<p>[※※※※]KVC的keyPath中的集合运算符如何使用？</p>
+<p>[※※※※]KVC和KVO的keyPath一定是属性么？</p>
+<p>[※※※※※]如何关闭默认的KVO的默认实现，并进入自定义的KVO实现？</p>
+<p>[※※※※※]apple用什么方式实现对一个对象的KVO？</p>
+<p>[※※]IBOutlet连出来的视图属性为什么可以被设置成weak?</p>
+<p>[※※※※※]IB中User Defined Runtime Attributes如何使用？</p>
+<p>[※※※]如何调试BAD_ACCESS错误</p>
+<p>[※※※]lldb（gdb）常用的调试命令？</p>
+<p>来源：<a href="http://blog.sunnyxx.com/2015/07/04/ios-interview/" target="_blank" rel="external">http://blog.sunnyxx.com/2015/07/04/ios-interview/</a></p>
+<hr>
+<p><strong><em>后续我会把每个相应的答案填上来。</em></strong></p>
+<p><strong><em>PS：所有答案都是个人见解，有问题请留言大家一起探讨～</em></strong></p>
+
+        </div>
+        <footer class="article-footer">
+            
+
+
+
+    <a data-url="http://blog.wangxinn.com/2015/07/16/强力iOS面试题/" data-id="ciljih9o50006mr43z0luq0up" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+<script>
+    (function ($) {
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+        </footer>
+    </div>
+</article>
+
+    <section id="comments">
+    
+        
+    <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+
+    
+    </section>
+
+                        </div>
+                    </section>
+                    <aside id="sidebar">
+    <a class="sidebar-toggle" title="Expand Sidebar"><i class="toggle icon"></i></a>
+    <div class="sidebar-top">
+        <p>关注我 :</p>
+        <ul class="social-links">
+            
+                
+                <li>
+                    <a class="social-tooltip" title="github" href="https://github.com/wxin9" target="_blank">
+                        <i class="icon fa fa-github"></i>
+                    </a>
+                </li>
+                
+            
+        </ul>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+        <a href="/2015/11/03/Javascript中关于抓取网络资源之后的解码问题/" id="article-nav-newer" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">下一篇</strong>
+        <p class="article-nav-title">
+        
+            Javascript中关于抓取网络资源之后的解码问题
+        
+        </p>
+        <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
+    </a>
+    
+    
+        <a href="/2015/07/16/解决使用nvm管理nodeJS后导致的node-modules找不到的问题/" id="article-nav-older" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">上一篇</strong>
+        <p class="article-nav-title">解决使用nvm管理nodeJS后导致的node_modules找不到的问题</p>
+        <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
+        </a>
+    
+</nav>
+
+    
+    <div class="widgets-container">
+        
+            
+                
+    <div class="widget-wrap">
+        <h3 class="widget-title">最新文章</h3>
+        <div class="widget">
+            <ul id="recent-post" class="no-thumbnail">
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/心得/">心得</a></p>
+                            <p class="item-title"><a href="/2016/03/07/产品从0到0.1，论PM拍脑袋的那些事/" class="title">产品从0到0.1，论PM拍脑袋的那些事</a></p>
+                            <p class="item-date"><time datetime="2016-03-07T13:18:49.000Z" itemprop="datePublished">2016-03-07</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/记录/">记录</a></p>
+                            <p class="item-title"><a href="/2016/03/04/BRD文档（商业需求报告）撰写要点/" class="title">BRD文档（商业需求报告）撰写要点</a></p>
+                            <p class="item-date"><time datetime="2016-03-04T09:02:49.000Z" itemprop="datePublished">2016-03-04</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/心得/">心得</a></p>
+                            <p class="item-title"><a href="/2015/11/03/Javascript中关于抓取网络资源之后的解码问题/" class="title">Javascript中关于抓取网络资源之后的解码问题</a></p>
+                            <p class="item-date"><time datetime="2015-11-03T09:42:31.000Z" itemprop="datePublished">2015-11-03</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/记录/">记录</a></p>
+                            <p class="item-title"><a href="/2015/07/16/强力iOS面试题/" class="title">强力iOS面试题</a></p>
+                            <p class="item-date"><time datetime="2015-07-16T09:48:48.000Z" itemprop="datePublished">2015-07-16</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/心得/">心得</a></p>
+                            <p class="item-title"><a href="/2015/07/16/解决使用nvm管理nodeJS后导致的node-modules找不到的问题/" class="title">解决使用nvm管理nodeJS后导致的node_modules找不到的问题</a></p>
+                            <p class="item-date"><time datetime="2015-07-16T01:19:50.000Z" itemprop="datePublished">2015-07-16</time></p>
+                        </div>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">分类</h3>
+        <div class="widget">
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/心得/">心得</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/记录/">记录</a><span class="category-list-count">2</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-float">
+        <h3 class="widget-title">标签云</h3>
+        <div class="widget tagcloud">
+            <a href="/tags/Javascript/" style="font-size: 10px;">Javascript</a> <a href="/tags/iOS/" style="font-size: 10px;">iOS</a> <a href="/tags/nodeJS/" style="font-size: 10px;">nodeJS</a> <a href="/tags/产品/" style="font-size: 20px;">产品</a> <a href="/tags/文档/" style="font-size: 10px;">文档</a> <a href="/tags/面试/" style="font-size: 10px;">面试</a>
+        </div>
+    </div>
+
+
+            
+        
+    </div>
+</aside>
+                </div>
+            </div>
+        </div>
+        <footer id="footer">
+    <div class="container">
+        <div class="container-inner">
+            <a id="back-to-top" href="javascript:;"><i class="icon fa fa-angle-up"></i></a>
+            <div class="credit">
+                <h1 class="logo-wrap">
+                    <a href="/" class="logo"></a>
+                </h1>
+                <p>&copy; 2016 Kaiser</p>
+                <p>Powered by <a href="//hexo.io/" target="_blank">Hexo</a>. Theme by <a href="//github.com/ppoffice" target="_blank">PPOffice</a></p>
+            </div>
+        </div>
+    </div>
+</footer>
+        
+    
+    <script>
+    var disqus_shortname = 'KaiserWang';
+    
+    
+    var disqus_url = 'http://blog.wangxinn.com/2015/07/16/强力iOS面试题/';
+    
+    (function() {
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+    </script>
+
+
+
+    
+        <script src="/vendor/fancybox/jquery.fancybox.pack.js"></script>
+    
+
+    
+        <script src="/vendor/scrollLoading/jquery.scrollLoading.js"></script>
+        <script src="/vendor/scrollLoading/main.js"></script>
+    
+
+
+<!-- Custom Scripts -->
+<script src="/js/main.js"></script>
+
+    </div>
+</body>
+</html>

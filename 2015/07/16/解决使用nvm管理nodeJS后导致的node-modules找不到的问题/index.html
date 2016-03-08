@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    
+    <title>解决使用nvm管理nodeJS后导致的node_modules找不到的问题 | Kaiser&#39;s Blog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+        <meta name="keywords" content="nodeJS" />
+    
+    <meta name="description" content="使用nvm管理nodeJS是个很好的方法，主要就是方便升级、删除和多版本的nodeJS，但是同时也带来了一些问题。
+比如在我使用pomelo库的时候，因为pomelo库是全局库，而且默认的文件夹路径是：
+
+~/.nvm/versions/node/v0.12.4/lib/node_modules
+
+这个路径显而易见，不是nodeJS默认安装的路径，然后就会导致一个问题：
+
+Cannot find">
+<meta property="og:type" content="article">
+<meta property="og:title" content="解决使用nvm管理nodeJS后导致的node_modules找不到的问题">
+<meta property="og:url" content="http://blog.wangxinn.com/2015/07/16/解决使用nvm管理nodeJS后导致的node-modules找不到的问题/index.html">
+<meta property="og:site_name" content="Kaiser's Blog">
+<meta property="og:description" content="使用nvm管理nodeJS是个很好的方法，主要就是方便升级、删除和多版本的nodeJS，但是同时也带来了一些问题。
+比如在我使用pomelo库的时候，因为pomelo库是全局库，而且默认的文件夹路径是：
+
+~/.nvm/versions/node/v0.12.4/lib/node_modules
+
+这个路径显而易见，不是nodeJS默认安装的路径，然后就会导致一个问题：
+
+Cannot find">
+<meta property="og:updated_time" content="2016-03-07T09:32:51.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="解决使用nvm管理nodeJS后导致的node_modules找不到的问题">
+<meta name="twitter:description" content="使用nvm管理nodeJS是个很好的方法，主要就是方便升级、删除和多版本的nodeJS，但是同时也带来了一些问题。
+比如在我使用pomelo库的时候，因为pomelo库是全局库，而且默认的文件夹路径是：
+
+~/.nvm/versions/node/v0.12.4/lib/node_modules
+
+这个路径显而易见，不是nodeJS默认安装的路径，然后就会导致一个问题：
+
+Cannot find">
+    
+
+    
+
+    
+
+    <link rel="stylesheet" href="/vendor/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/vendor/titillium-web/styles.css">
+    <link rel="stylesheet" href="/vendor/source-code-pro/styles.css">
+
+    <link rel="stylesheet" href="/css/style.css">
+
+    <script src="/vendor/jquery/2.0.3/jquery.min.js"></script>
+    
+    
+        <link rel="stylesheet" href="/vendor/fancybox/jquery.fancybox.css">
+    
+    
+        <link rel="stylesheet" href="/vendor/scrollLoading/style.css">
+    
+    
+    
+
+</head>
+
+<body>
+    <div id="wrap">
+        <header id="header">
+    <div id="header-outer" class="outer">
+        <div class="container">
+            <div class="container-inner">
+                <div id="header-title">
+                    <h1 class="logo-wrap">
+                        <a href="/" class="logo"></a>
+                    </h1>
+                    
+                        <h2 class="subtitle-wrap">
+                            <p class="subtitle">技术&amp;产品，发展&amp;思考，事业&amp;生活</p>
+                        </h2>
+                    
+                </div>
+                <div id="header-inner" class="nav-container">
+                    <a id="main-nav-toggle" class="nav-icon fa fa-bars"></a>
+                    <div class="nav-container-inner">
+                        <ul id="main-nav">
+                            
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/">主页</a>
+                                </li>
+                            
+                                        <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/心得/">心得</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/记录/">记录</a></li></ul>
+                                    
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/about">关于</a>
+                                </li>
+                            
+                        </ul>
+                        <nav id="sub-nav">
+                            <div id="search-form-wrap">
+
+    <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="搜索"><input type="hidden" name="sitesearch" value="http://blog.wangxinn.com"></form>
+
+</div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+        <div class="container">
+            <div class="main-body container-inner">
+                <div class="main-body-inner">
+                    <section id="main">
+                        <div class="main-body-header">
+    <h1 class="header">
+    
+    <a class="page-title-link" href="/categories/心得/">心得</a>
+    </h1>
+</div>
+                        <div class="main-body-content">
+                            <article id="post-解决使用nvm管理nodeJS后导致的node-modules找不到的问题" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+        解决使用nvm管理nodeJS后导致的node_modules找不到的问题
+        </h1>
+    
+
+            </header>
+        
+        <div class="article-subtitle">
+            <a href="/2015/07/16/解决使用nvm管理nodeJS后导致的node-modules找不到的问题/" class="article-date">
+    <time datetime="2015-07-16T01:19:50.000Z" itemprop="datePublished">2015-07-16</time>
+</a>
+            
+    <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/nodeJS/">nodeJS</a></li></ul>
+
+        </div>
+        <div class="article-entry" itemprop="articleBody">
+            <p>使用<strong>nvm</strong>管理<strong>nodeJS</strong>是个很好的方法，主要就是方便升级、删除和多版本的<strong>nodeJS</strong>，但是同时也带来了一些问题。</p>
+<p>比如在我使用<strong>pomelo</strong>库的时候，因为<strong>pomelo</strong>库是全局库，而且默认的文件夹路径是：</p>
+<blockquote>
+<p>~/.nvm/versions/node/v0.12.4/lib/node_modules</p>
+</blockquote>
+<p>这个路径显而易见，不是<strong>nodeJS</strong>默认安装的路径，然后就会导致一个问题：</p>
+<blockquote>
+<p>Cannot find module ‘pomelo’</p>
+</blockquote>
+<p>下面解决方法来了，在~/.bash_profile文件中加入以下内容就可以解决了。</p>
+<pre><code>NODE_PATH=~/.nvm/versions/node/v0.12.4/lib/node_modules #设置node路径
+export NODE_PATH #导出
+</code></pre><p>OK，完毕了。</p>
+
+        </div>
+        <footer class="article-footer">
+            
+
+
+
+    <a data-url="http://blog.wangxinn.com/2015/07/16/解决使用nvm管理nodeJS后导致的node-modules找不到的问题/" data-id="ciljih9o90008mr43j1zlq1oi" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+<script>
+    (function ($) {
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+        </footer>
+    </div>
+</article>
+
+    <section id="comments">
+    
+        
+    <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+
+    
+    </section>
+
+                        </div>
+                    </section>
+                    <aside id="sidebar">
+    <a class="sidebar-toggle" title="Expand Sidebar"><i class="toggle icon"></i></a>
+    <div class="sidebar-top">
+        <p>关注我 :</p>
+        <ul class="social-links">
+            
+                
+                <li>
+                    <a class="social-tooltip" title="github" href="https://github.com/wxin9" target="_blank">
+                        <i class="icon fa fa-github"></i>
+                    </a>
+                </li>
+                
+            
+        </ul>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+        <a href="/2015/07/16/强力iOS面试题/" id="article-nav-newer" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">下一篇</strong>
+        <p class="article-nav-title">
+        
+            强力iOS面试题
+        
+        </p>
+        <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
+    </a>
+    
+    
+</nav>
+
+    
+    <div class="widgets-container">
+        
+            
+                
+    <div class="widget-wrap">
+        <h3 class="widget-title">最新文章</h3>
+        <div class="widget">
+            <ul id="recent-post" class="no-thumbnail">
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/心得/">心得</a></p>
+                            <p class="item-title"><a href="/2016/03/07/产品从0到0.1，论PM拍脑袋的那些事/" class="title">产品从0到0.1，论PM拍脑袋的那些事</a></p>
+                            <p class="item-date"><time datetime="2016-03-07T13:18:49.000Z" itemprop="datePublished">2016-03-07</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/记录/">记录</a></p>
+                            <p class="item-title"><a href="/2016/03/04/BRD文档（商业需求报告）撰写要点/" class="title">BRD文档（商业需求报告）撰写要点</a></p>
+                            <p class="item-date"><time datetime="2016-03-04T09:02:49.000Z" itemprop="datePublished">2016-03-04</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/心得/">心得</a></p>
+                            <p class="item-title"><a href="/2015/11/03/Javascript中关于抓取网络资源之后的解码问题/" class="title">Javascript中关于抓取网络资源之后的解码问题</a></p>
+                            <p class="item-date"><time datetime="2015-11-03T09:42:31.000Z" itemprop="datePublished">2015-11-03</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/记录/">记录</a></p>
+                            <p class="item-title"><a href="/2015/07/16/强力iOS面试题/" class="title">强力iOS面试题</a></p>
+                            <p class="item-date"><time datetime="2015-07-16T09:48:48.000Z" itemprop="datePublished">2015-07-16</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/心得/">心得</a></p>
+                            <p class="item-title"><a href="/2015/07/16/解决使用nvm管理nodeJS后导致的node-modules找不到的问题/" class="title">解决使用nvm管理nodeJS后导致的node_modules找不到的问题</a></p>
+                            <p class="item-date"><time datetime="2015-07-16T01:19:50.000Z" itemprop="datePublished">2015-07-16</time></p>
+                        </div>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">分类</h3>
+        <div class="widget">
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/心得/">心得</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/记录/">记录</a><span class="category-list-count">2</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-float">
+        <h3 class="widget-title">标签云</h3>
+        <div class="widget tagcloud">
+            <a href="/tags/Javascript/" style="font-size: 10px;">Javascript</a> <a href="/tags/iOS/" style="font-size: 10px;">iOS</a> <a href="/tags/nodeJS/" style="font-size: 10px;">nodeJS</a> <a href="/tags/产品/" style="font-size: 20px;">产品</a> <a href="/tags/文档/" style="font-size: 10px;">文档</a> <a href="/tags/面试/" style="font-size: 10px;">面试</a>
+        </div>
+    </div>
+
+
+            
+        
+    </div>
+</aside>
+                </div>
+            </div>
+        </div>
+        <footer id="footer">
+    <div class="container">
+        <div class="container-inner">
+            <a id="back-to-top" href="javascript:;"><i class="icon fa fa-angle-up"></i></a>
+            <div class="credit">
+                <h1 class="logo-wrap">
+                    <a href="/" class="logo"></a>
+                </h1>
+                <p>&copy; 2016 Kaiser</p>
+                <p>Powered by <a href="//hexo.io/" target="_blank">Hexo</a>. Theme by <a href="//github.com/ppoffice" target="_blank">PPOffice</a></p>
+            </div>
+        </div>
+    </div>
+</footer>
+        
+    
+    <script>
+    var disqus_shortname = 'KaiserWang';
+    
+    
+    var disqus_url = 'http://blog.wangxinn.com/2015/07/16/解决使用nvm管理nodeJS后导致的node-modules找不到的问题/';
+    
+    (function() {
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+    </script>
+
+
+
+    
+        <script src="/vendor/fancybox/jquery.fancybox.pack.js"></script>
+    
+
+    
+        <script src="/vendor/scrollLoading/jquery.scrollLoading.js"></script>
+        <script src="/vendor/scrollLoading/main.js"></script>
+    
+
+
+<!-- Custom Scripts -->
+<script src="/js/main.js"></script>
+
+    </div>
+</body>
+</html>
